@@ -1,4 +1,4 @@
-const CACHE = 'hkm-shell-c78252ddeee76b93';
+const CACHE = 'hkm-shell-a6c62f6ab030ca44';
 const ROOT = new URL('./', self.location.href);
 const FILES = ['index.html', 'app.js', 'offline.js', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'apple-touch-icon.png'];
 const PATHS = new Set(FILES.map(file => new URL(file, ROOT).pathname));

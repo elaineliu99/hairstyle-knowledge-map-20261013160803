@@ -18,6 +18,11 @@
   <style>
     .edge.element-connection{pointer-events:stroke;cursor:pointer}.edge.element-connection.selected{stroke:#286ba6;stroke-width:3.5}.symbol-element{cursor:grab}.symbol-element:active{cursor:grabbing}.symbol-element.selected circle{stroke:#286ba6;stroke-width:3}.rich-toolbar button.primary,.rich-toolbar button[aria-pressed="true"]{background:var(--blue);color:#fff}.rich-toolbar button.primary u,.rich-toolbar button.primary s,.rich-toolbar button[aria-pressed="true"] u,.rich-toolbar button[aria-pressed="true"] s{color:#fff}
   </style>
+  <style>
+    .inspector:not(.open):not(.empty){display:none}
+    .field .rich-toolbar select{width:auto;padding:0 6px;min-width:60px;flex:0 1 auto}
+    @media(max-width:680px){.inspector:not(.open){visibility:hidden;pointer-events:none;transform:translateY(100%)}}
+  </style>
 </head>
 <body>
 <div class="app">
@@ -32,7 +37,7 @@
   <section id="mapView" class="view map-view active">
     <div class="map-tools">
       <select id="mapSelect" class="map-select" aria-label="选择导图"></select>
-      <button class="btn primary" id="newMapBtn">＋ 新建导图</button><button class="btn ghost" id="newTopicBtn">＋ 独立主题</button><button class="btn ghost" id="seedOriginalBtn">＋ 建立原图结构</button><button class="btn ghost desktop-only" id="renameMapBtn">重命名</button><button class="btn danger desktop-only" id="deleteMapBtn">删除</button>
+      <button class="btn primary" id="newMapBtn">＋ 新建导图</button><button class="btn ghost" id="newTopicBtn">＋ 独立主题</button><button class="btn ghost" id="seedOriginalBtn" hidden>＋ 建立原图结构</button><button class="btn ghost desktop-only" id="renameMapBtn">重命名</button><button class="btn danger desktop-only" id="deleteMapBtn">删除</button>
       <span class="sep desktop-only"></span><button class="btn ghost" id="connectBtn">↗ 连接线</button><button class="btn ghost" id="symbolBtn">＋ 符号</button><button class="btn ghost desktop-only" id="arrangeBtn">整理布局</button><button class="btn icon ghost desktop-only" id="undoBtn" title="撤销">↶</button><button class="btn icon ghost desktop-only" id="redoBtn" title="重做">↷</button><button class="btn ghost desktop-only" id="fitBtn">适应屏幕</button>
     </div>
     <div class="workspace">

@@ -178,11 +178,11 @@ function fitViewport() {
   const map=currentMap(), svg=$('#canvas'); if(!map || !svg) return;
   const nodes=visibleNodes(map); if(!nodes.length) return;
   const rect=svg.getBoundingClientRect(); const minX=Math.min(...nodes.map(n=>n.x-100)), maxX=Math.max(...nodes.map(n=>n.x+100)), minY=Math.min(...nodes.map(n=>n.y-55)), maxY=Math.max(...nodes.map(n=>n.y+55));
-  const pad=70, sx=(rect.width-pad*2)/(maxX-minX||1), sy=(rect.height-pad*2)/(maxY-minY||1); viewport.scale=Math.max(.35,Math.min(1.25,sx,sy)); viewport.x=rect.width/2-((minX+maxX)/2)*viewport.scale; viewport.y=rect.height/2-((minY+maxY)/2)*viewport.scale; applyViewport();
+  const pad=70, sx=(rect.width-pad*2)/(maxX-minX||1), sy=(rect.height-pad*2)/(maxY-minY||1); viewport.scale=Math.max(.01,Math.min(1.25,sx,sy)); viewport.x=rect.width/2-((minX+maxX)/2)*viewport.scale; viewport.y=rect.height/2-((minY+maxY)/2)*viewport.scale; applyViewport();
 }
 function applyViewport() { $('#world').setAttribute('transform',`translate(${viewport.x} ${viewport.y}) scale(${viewport.scale})`); $('#zoomLabel').textContent=`${Math.round(viewport.scale*100)}%`; }
 function worldPoint(evt) { const r=$('#canvas').getBoundingClientRect(); return {x:(evt.clientX-r.left-viewport.x)/viewport.scale,y:(evt.clientY-r.top-viewport.y)/viewport.scale}; }
-function zoomAt(factor, clientX, clientY) { const r=$('#canvas').getBoundingClientRect(); const cx=clientX ?? r.left+r.width/2, cy=clientY ?? r.top+r.height/2; const before={x:(cx-r.left-viewport.x)/viewport.scale,y:(cy-r.top-viewport.y)/viewport.scale}; viewport.scale=Math.max(.3,Math.min(2.4,viewport.scale*factor)); viewport.x=cx-r.left-before.x*viewport.scale; viewport.y=cy-r.top-before.y*viewport.scale; applyViewport(); }
+function zoomAt(factor, clientX, clientY) { const r=$('#canvas').getBoundingClientRect(); const cx=clientX ?? r.left+r.width/2, cy=clientY ?? r.top+r.height/2; const before={x:(cx-r.left-viewport.x)/viewport.scale,y:(cy-r.top-viewport.y)/viewport.scale}; viewport.scale=Math.max(.01,Math.min(2.4,viewport.scale*factor)); viewport.x=cx-r.left-before.x*viewport.scale; viewport.y=cy-r.top-before.y*viewport.scale; applyViewport(); }
 function connectionEndpoints(from, to) {
   const dx = to.x - from.x, dy = to.y - from.y;
   if (!dx && !dy) return {start: {...from}, end: {...to}};
